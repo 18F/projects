@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Projects{% endblock %}</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="/static/css/basscss.min.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="clearfix white bg-black">
+    <div class="container py1 px2">
+      <a href="/" class="bold caps white">18F Projects [WIP]</a>
+    </div>
+  </nav>
+  <div class="container px2">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+.cache
+.env
+.DS_Store
+
+__pycache__/
+*.py[cod]
+*.swp
+*.log
+
+secrets
+venv
