@@ -4,15 +4,16 @@
   <meta charset="utf-8">
   <title>{% block title %}Projects{% endblock %}</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
   <link href="/static/css/basscss.min.css" rel="stylesheet">
 </head>
-<body>
-  <nav class="clearfix white bg-black">
-    <div class="container py1 px2">
+<body class="bg-darken-1">
+  <nav class="clearfix bg-blue">
+    <div class="container py1 px2 center">
       <a href="/" class="bold caps white">18F Projects [WIP]</a>
     </div>
   </nav>
-  <div class="container px2">
+  <div class="container px2 py3">
     {% block content %}{% endblock %}
   </div>
 </body>
