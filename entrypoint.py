@@ -16,12 +16,14 @@ import subprocess
 HOST_UID = os.stat('/projects').st_uid
 HOST_USER = os.environ.get('HOST_USER', 'projects_user')
 
+
 def does_username_exist(username):
     try:
         pwd.getpwnam(username)
         return True
     except KeyError:
         return False
+
 
 def does_uid_exist(uid):
     try:
@@ -37,7 +39,6 @@ if __name__ == '__main__':
             while does_username_exist(username):
                 username += '0'
             home_dir = '/home/%s' % username
-            #print "Creating username %s with UID %d" % (username, HOST_UID)
             subprocess.check_call([
                 'useradd',
                 '-d', home_dir,

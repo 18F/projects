@@ -2,6 +2,7 @@
 import os
 import sys
 
+
 def setup_docker_sigterm_handler():
     '''
     'manage.py runserver' is not set up to deal with a SIGTERM signal,
@@ -36,7 +37,8 @@ def setup_docker_sigterm_handler():
     signal.signal(signal.SIGTERM, handler)
 
 if __name__ == "__main__":
-    if os.getcwd() == '/projects': setup_docker_sigterm_handler()
+    if os.getcwd() == '/projects':
+        setup_docker_sigterm_handler()
 
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "app.settings")
 
