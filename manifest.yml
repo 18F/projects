@@ -6,5 +6,6 @@ applications:
   memory: 256M
   name: 18f-projects
   stack: cflinuxfs2
+  buildpack: https://github.com/cloudfoundry/python-buildpack
   services:
     - projects-db
