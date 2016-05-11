@@ -1,0 +1,14 @@
+{
+  "name": "projects",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {},
+  "engines": {
+    "node": "~4.4.x",
+    "npm": "~3.8.x"
+  },
+  "devDependencies": {
+    "node-sass": "^3.7.0",
+    "nodemon": "^1.9.2"
+  }
+}
