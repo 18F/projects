@@ -7,13 +7,15 @@
   <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
   <link href="/static/css/basscss.min.css" rel="stylesheet">
 </head>
-<body class="bg-darken-1">
-  <nav class="clearfix bg-blue">
-    <div class="container py1 px2 center">
-      <a href="/" class="bold caps white">18F Projects [WIP]</a>
-    </div>
-  </nav>
+<body>
+  <div class="h6 p1 bg-black white center caps">Work in Progress</div>
   <div class="container px2 py3">
+    <div class="mb3">
+      <a href="/" class="h1 p0 btn">
+        <img src="/static/img/logo.png" class="align-middle" width="75">
+        <span class="bold gray">/projects</span>
+      </a>
+    </div>
     {% block content %}{% endblock %}
   </div>
 </body>

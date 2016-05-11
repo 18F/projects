@@ -2,18 +2,24 @@
 
 
 {% block content %}
-<h2>Sample data</h2>
+<h1>Check out the awesome things we've built</h1>
 <div class="flex flex-wrap mxn2">
 {% for i in '123456789123' %}
   <div class="col-12 sm-col-6 md-col-4 border-box p2">
     <div class="p2 bg-white border rounded">
-      <div class="mb1 h5 bold caps">cloud.gov</div>
-      <div class="mb1">
+      <div class="mb1 h4 bold caps">
+        <span class="right"><i class="icon ion-help-circled"></i></span>
+        cloud.gov
+      </div>
+      <div class="mb2">
         Develop, run, and manage web applications without the complexity and cost of maintaining infrastructure.
       </div>
-      <div>
-        <a href="#!"><i class="icon ion-help-circled"></i></a> · 
-        <a target="_blank" href="#!"><i class="icon ion-social-github"></i></a>
+      <div class="h6 mb2">
+        Developed with <span class="bold underline">U.S. Department of Treasury</span>
+      </div>
+      <div class="h3">
+        <a href="#!" class="black"><i class="icon ion-share"></i></a>&nbsp;
+        <a target="_blank" href="#!" class="black"><i class="icon ion-code-working"></i></a>
       </div>
     </div>
   </div>
