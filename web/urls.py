@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from projects.views.home import HomeView
+from web.views.home import HomeView
 
 
 urlpatterns = [
