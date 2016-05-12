@@ -17,11 +17,11 @@ class Client(models.Model):
     treasury_agency_code = models.CharField(max_length=255, blank=True)
     cgac_agency_code = models.CharField(max_length=255, blank=True)
 
-    def __str__(self):
-        return '%s - %s' % (self.department, self.agency)
-
     class Meta:
         ordering = ['department', 'agency']
+
+    def __str__(self):
+        return '%s - %s' % (self.department, self.agency)
 
 
 class Project(ModelBase):
@@ -30,7 +30,7 @@ class Project(ModelBase):
     description = models.TextField()
 
     class Meta:
-        ordering = ['name', ]
+        ordering = ['name']
 
     def __str__(self):
-        return '%s' % (self.name)
+        return self.name
