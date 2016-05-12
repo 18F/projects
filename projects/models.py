@@ -19,7 +19,10 @@ class Project(ModelBase):
         help_text='The slug of the project (e.g., "agile-bpa")'
     )
     tock_id = models.IntegerField(
-        help_text='The ID of the project in Tock.'
+        help_text='The ID of the project in Tock.',
+        blank=True,
+        null=True,
+        unique=True
     )
     tagline = models.CharField(
         max_length=300,
@@ -30,7 +33,8 @@ class Project(ModelBase):
     )
     github_url = models.URLField(
         help_text='The GitHub URL of the project, e.g. '
-                  'https://github.com/18f/agile-bpa'
+                  'https://github.com/18f/agile-bpa',
+        blank=True
     )
     description = models.TextField(
         help_text='The description of the project. Markdown is allowed.'
