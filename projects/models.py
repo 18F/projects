@@ -31,6 +31,11 @@ class Project(ModelBase):
     impact = models.TextField(
         help_text='The impact of the project. Markdown is allowed.'
     )
+    live_site_url = models.URLField(
+        help_text='A URL to the site where the project is deployed, '
+                  'if one exists.',
+        blank=True
+    )
     github_url = models.URLField(
         help_text='The GitHub URL of the project, e.g. '
                   'https://github.com/18f/agile-bpa',
