@@ -20,8 +20,17 @@ class Client(models.Model):
     def __str__(self):
         return '%s - %s' % (self.department, self.agency)
 
+    class Meta:
+        ordering = ['department', 'agency']
+
 
 class Project(ModelBase):
     name = models.CharField(max_length=256)
     client = models.ForeignKey(Client, null=True)
     description = models.TextField()
+
+    class Meta:
+        ordering = ['name', ]
+
+    def __str__(self):
+        return '%s' % (self.name)
