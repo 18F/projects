@@ -28,7 +28,8 @@ class Project(ModelBase):
     )
     slug = models.CharField(
         max_length=100,
-        help_text='The slug of the project (e.g., "agile-bpa")'
+        help_text='The slug of the project (e.g., "agile-bpa")',
+        blank=True
     )
     tock_id = models.IntegerField(
         help_text='The ID of the project in Tock.',
@@ -38,10 +39,12 @@ class Project(ModelBase):
     )
     tagline = models.CharField(
         max_length=300,
-        help_text='The tagline of the project; short and concise.'
+        help_text='The tagline of the project; short and concise.',
+        blank=True
     )
     impact = models.TextField(
-        help_text='The impact of the project. Markdown is allowed.'
+        help_text='The impact of the project. Markdown is allowed.',
+        blank=True
     )
     live_site_url = models.URLField(
         help_text='A URL to the site where the project is deployed, '
@@ -65,4 +68,20 @@ class Project(ModelBase):
         Client,
         help_text='The client of the project, if any.',
         null=True
+    )
+    billable = models.BooleanField(
+        help_text='Whether or not the project is chargeable to a client.',
+        default=False
+    )
+    mb_number = models.CharField(
+        help_text='The unique identifier for an agreement in'
+        'the GSA financial system. This is different than'
+        'the tock_id.',
+        max_length=100,
+        blank=True
+    )
+    cloud_dot_gov = models.BooleanField(
+        help_text='Wehther or not the project includes cloud.gov'
+        'platform support.',
+        default=False
     )
