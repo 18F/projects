@@ -4,7 +4,7 @@ We have hundreds of repos and have released dozens of tools but they're hard to 
 
 We are now creating a way to surface and discover the projects that 18F works on. You will be able to easily find how each engagement and repo works, who works on it, and how to contact the team that created it. 
 
-This is an ongoing **work in progress!!!** Our Wiki contains notes and drafts that you might find helpful if you're also thinking about discovery.
+This is an ongoing **work in progress!!!** Our [Wiki](https://github.com/18F/projects/wiki) contains research notes and drafts that you might find helpful if you're also thinking about discovery.
 
 #### Dependencies
 
@@ -22,6 +22,12 @@ $ createdb 18fprojects
 
 $ python manage.py migrate
 $ python manage.py runserver
+```
+
+A fixture file holding all possible federal clients is included. To load:
+
+```
+$ python manage.py loaddata projects/fixtures/usa-agencies.json
 ```
 
 #### Using Docker (optional)
