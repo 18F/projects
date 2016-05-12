@@ -24,6 +24,12 @@ $ python manage.py migrate
 $ python manage.py runserver
 ```
 
+A fixture file holding all possible federal clients is included. To load:
+
+```
+$ python manage.py loaddata projects/fixtures/usa-agencies.json
+```
+
 #### Using Docker (optional)
 
 A Docker setup potentially makes development and deployment easier.
