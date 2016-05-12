@@ -1,0 +1,8 @@
+#!/bin/bash
+
+BASE=web/static
+
+node-sass \
+  --include-path ${BASE}/sass \
+  --output-style compressed \
+  ${BASE}/sass/main.scss ${BASE}/build/main.css

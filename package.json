@@ -2,7 +2,10 @@
   "name": "projects",
   "version": "0.0.1",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "build-css": "./bin/build-css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
+  },
   "engines": {
     "node": "~4.4.x",
     "npm": "~3.8.x"
