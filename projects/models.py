@@ -17,6 +17,9 @@ class Client(models.Model):
     treasury_agency_code = models.CharField(max_length=255, blank=True)
     cgac_agency_code = models.CharField(max_length=255, blank=True)
 
+    class Meta:
+        ordering = ['department', 'agency']
+
     def __str__(self):
         return '%s - %s' % (self.department, self.agency)
 
@@ -81,7 +84,13 @@ class Project(ModelBase):
         blank=True
     )
     cloud_dot_gov = models.BooleanField(
-        help_text='Wehther or not the project includes cloud.gov'
+        help_text='Whether or not the project includes cloud.gov'
         'platform support.',
         default=False
     )
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
