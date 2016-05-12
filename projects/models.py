@@ -9,6 +9,18 @@ class ModelBase(models.Model):
         abstract = True
 
 
+class Client(models.Model):
+    department = models.CharField(max_length=255, blank=True)
+    agency = models.CharField(max_length=255, blank=True)
+    omb_agency_code = models.CharField(max_length=255, blank=True)
+    omb_bureau_code = models.CharField(max_length=255, blank=True)
+    treasury_agency_code = models.CharField(max_length=255, blank=True)
+    cgac_agency_code = models.CharField(max_length=255, blank=True)
+
+    def __str__(self):
+        return '%s - %s' % (self.department, self.agency)
+
+
 class Project(ModelBase):
     name = models.CharField(
         max_length=100,
@@ -48,4 +60,9 @@ class Project(ModelBase):
         help_text='Whether or not the project is currently being '
                   'worked on at 18F.',
         default=True
+    )
+    client = models.ForeignKey(
+        Client,
+        help_text='The client of the project, if any.',
+        null=True
     )
