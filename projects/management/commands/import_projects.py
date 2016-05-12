@@ -1,6 +1,6 @@
 import csv
 from django.db import transaction
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 
 from ...models import Project
 
@@ -9,9 +9,12 @@ class DryRunFinished(Exception):
 
 class Command(BaseCommand):
     help = 'Import projects from a CSV file.'
-    args = '<filename>'
 
     def add_arguments(self, parser):
+        parser.add_argument(
+            'filename',
+            help='CSV file to import.'
+        )
         parser.add_argument(
             '--dry-run',
             default=False,
@@ -55,13 +58,10 @@ class Command(BaseCommand):
                     self.import_project(row, row_num)
                 row_num += 1
 
-    def handle(self, *args, **options):
-        if len(args) != 1:
-            raise CommandError('Please specify a CSV filename.')
-
+    def handle(self, **options):
         try:
             with transaction.atomic():
-                self.import_csv(args[0])
+                self.import_csv(options['filename'])
                 if options['dry_run']:
                     raise DryRunFinished()
         except DryRunFinished:
