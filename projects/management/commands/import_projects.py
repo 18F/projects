@@ -1,8 +1,9 @@
 import csv
-from django.db import transaction
-from django.core.management.base import BaseCommand
 
-from ...models import Project
+from django.core.management.base import BaseCommand
+from django.db import transaction
+
+from projects.models import Project
 
 
 class DryRunFinished(Exception):
@@ -29,13 +30,9 @@ class Command(BaseCommand):
 
     def import_project(self, row, row_num):
         slug = row['name']
-
         self.stdout.write("Importing row %d (%s)...\n" % (row_num, slug))
 
-        if row['Tock ID']:
-            tock_id = int(row['Tock ID'])
-        else:
-            tock_id = None
+        tock_id = int(row['Tock ID']) if row['Tock ID'] else None
 
         p = Project(
             name=row['full name'],
@@ -52,13 +49,12 @@ class Command(BaseCommand):
     def import_csv(self, filename):
         with open(filename, encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
-            row_num = 2
-            for row in reader:
-                if row_num > 2:
-                    # Skip this row, it's just helpful info about the
-                    # first row.
-                    self.import_project(row, row_num)
-                row_num += 1
+
+            # Skip first row
+            next(reader)
+
+            for i, row in enumerate(reader):
+                self.import_project(row, i + 1)
 
     def handle(self, **options):
         try:

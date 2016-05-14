@@ -74,7 +74,8 @@ class Project(ModelBase):
         help_text='Name of 18F employee who is responsible for this'
         ' project.',
         max_length=255,
-        verbose_name='Project Lead'
+        verbose_name='Project Lead',
+        blank=True
     )
     description = models.TextField(
         help_text='The description of the project. Markdown is allowed.'
