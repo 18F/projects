@@ -14,10 +14,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'test_without_migrations',
 
     'projects',
     'web',
+    'api',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -68,3 +70,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 STATICFILES_DIRS = ()
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+REST_FRAMEWORK = {
+    'UNICODE_JSON': False,
+    'DEFAULT_PAGINATION_CLASS': ('rest_framework.pagination.'
+                                 'PageNumberPagination'),
+    'PAGE_SIZE': 25,
+}
