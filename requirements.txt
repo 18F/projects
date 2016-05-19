@@ -1,5 +1,6 @@
 dj-database-url==0.4.1
 Django==1.9.6
+django-test-without-migrations==0.4
 flake8==2.5.4
 gunicorn==19.4.5
 mccabe==0.4.0
@@ -7,4 +8,3 @@ pep8==1.7.0
 psycopg2==2.6.1
 pyflakes==1.0.0
 whitenoise==3.0
-django-test-without-migrations==0.4

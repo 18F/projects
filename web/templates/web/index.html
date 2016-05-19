@@ -2,17 +2,16 @@
 
 
 {% block content %}
-<h1>Check out the awesome things we've built</h1>
+<h1>Here are some cool things we helped build</h1>
 <div class="flex flex-wrap mxn2">
-{% for i in '123456789123' %}
+{% for p in projects %}
   <div class="col-12 sm-col-6 md-col-4 border-box p2">
     <div class="p2 bg-white border rounded">
-      <div class="mb1 h4 bold caps">
-        <span class="right"><i class="icon ion-help-circled"></i></span>
-        cloud.gov
-      </div>
+      <a class="h4 caps bold mb1 block black" href="{% url 'web:project' p.pk %}">
+        {{ p.name }}
+      </a>
       <div class="mb2">
-        Develop, run, and manage web applications without the complexity and cost of maintaining infrastructure.
+        {{ p.tagline }}
       </div>
       <div class="h6 mb2">
         Developed with <span class="bold underline">U.S. Department of Treasury</span>

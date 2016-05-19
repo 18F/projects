@@ -1,9 +1,13 @@
 import csv
+import logging
 
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
 from projects.models import Project
+
+
+logger = logging.getLogger(__name__)
 
 
 class DryRunFinished(Exception):
@@ -25,17 +29,19 @@ class Command(BaseCommand):
             action='store_true'
         )
 
-    def unicode_row(self, row):
-        return [item.decode('utf-8') for item in row]
-
     def import_project(self, row, row_num):
-        slug = row['name']
-        self.stdout.write("Importing row %d (%s)...\n" % (row_num, slug))
+        logger.info("Importing row {}...".format(row_num))
 
+        name = row['full name']
+        if not name:
+            logger.warn("Skipping! (no name)")
+            return
+
+        slug = row['name'] or name.replace(' ', '-').lower()
         tock_id = int(row['Tock ID']) if row['Tock ID'] else None
 
         p = Project(
-            name=row['full name'],
+            name=name,
             slug=slug,
             tock_id=tock_id,
             tagline=row['tagline'],
@@ -63,4 +69,4 @@ class Command(BaseCommand):
                 if options['dry_run']:
                     raise DryRunFinished()
         except DryRunFinished:
-            self.stdout.write('Dry run complete.')
+            logger.info('Dry run complete.')
