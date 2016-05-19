@@ -30,6 +30,14 @@ A fixture file holding all possible federal clients is included. To load:
 $ python manage.py loaddata projects/fixtures/usa-agencies.json
 ```
 
+To load data from our S3 bucket, the following env vars are needed:
+
+```
+AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY
+AWS_BUCKET
+```
+
 #### Using Docker (optional)
 
 A Docker setup potentially makes development and deployment easier.
