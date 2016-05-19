@@ -97,19 +97,17 @@ class Project(ModelBase):
         blank=True,
         verbose_name='GitHub URL'
     )
-    status = models.CharField(
+    status = models.IntegerField(
         help_text='Current status of the project.',
         choices=[
             (0, 'Tentative'), (1, 'Active'), (2, 'Paused'), (3, 'Complete')
         ],
-        max_length=255,
         default=1
     )
-    billable = models.CharField(
+    billable = models.IntegerField(
         help_text='Whether or not the project is chargeable to a'
         ' non-18F client.',
         choices=[(0, 'Billable'), (1, 'Non-billable')],
-        max_length=255,
         default=1
     )
     cloud_dot_gov = models.BooleanField(
