@@ -1,6 +1,10 @@
+import boto3
 import csv
 import logging
 
+from tempfile import NamedTemporaryFile
+
+from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
@@ -28,8 +32,14 @@ class Command(BaseCommand):
             help='Don\'t commit imported data to database.',
             action='store_true'
         )
+        parser.add_argument(
+            '--use-s3',
+            default=False,
+            action='store_true',
+            help='Is file in our S3 bucket?',
+        )
 
-    def import_project(self, row, row_num):
+    def add_project(self, row, row_num):
         logger.info("Importing row {}...".format(row_num))
 
         name = row['full name']
@@ -52,7 +62,7 @@ class Command(BaseCommand):
         )
         p.save()
 
-    def import_csv(self, filename):
+    def parse_file(self, filename):
         with open(filename, encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
 
@@ -60,12 +70,29 @@ class Command(BaseCommand):
             next(reader)
 
             for i, row in enumerate(reader):
-                self.import_project(row, i + 1)
+                self.add_project(row, i + 1)
+
+    def import_s3(self, filename):
+        s3 = boto3.resource(
+            's3',
+            aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+            aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
+        )
+
+        with NamedTemporaryFile() as f:
+            s3.meta.client.download_file(settings.AWS_BUCKET, filename, f.name)
+            return self.parse_file(f.name)
+
+    def load(self, filename, use_s3):
+        if use_s3:
+            return self.import_s3(filename)
+
+        return self.parse_file(filename)
 
     def handle(self, **options):
         try:
             with transaction.atomic():
-                self.import_csv(options['filename'])
+                self.load(options['filename'], options['use_s3'])
                 if options['dry_run']:
                     raise DryRunFinished()
         except DryRunFinished:
