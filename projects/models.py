@@ -68,6 +68,7 @@ class Project(ModelBase):
     client = models.ForeignKey(
         Client,
         help_text='The client of the project, if any.',
+        blank=True,
         null=True
     )
     project_lead = models.CharField(
