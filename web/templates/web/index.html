@@ -8,17 +8,24 @@
   <div class="col-12 sm-col-6 md-col-4 border-box p2">
     <div class="p2 bg-white border rounded">
       <a class="h4 caps bold mb1 block black" href="{% url 'web:project' p.pk %}">
+        <span class="right"><i class="icon ion-help-circled"></i></span>
         {{ p.name }}
       </a>
       <div class="mb2">
         {{ p.tagline }}
       </div>
+      {% if p.client %}
       <div class="h6 mb2">
-        Developed with <span class="bold underline">U.S. Department of Treasury</span>
+        Developed with <span class="bold underline">{{ p.client.agency }}</span>
       </div>
+      {% endif %}
       <div class="h3">
-        <a href="#!" class="black"><i class="icon ion-share"></i></a>&nbsp;
-        <a target="_blank" href="#!" class="black"><i class="icon ion-code-working"></i></a>
+        {% if p.live_site_url %}
+        <a href="{{ p.live_site_url }}" class="black"><i class="icon ion-share"></i></a>&nbsp;
+        {% endif %}
+        {% if p.github_url %}
+        <a target="_blank" href="{{ p.github_url }}" class="black"><i class="icon ion-code-working"></i></a>
+        {% endif %}
       </div>
     </div>
   </div>
