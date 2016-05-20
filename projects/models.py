@@ -131,6 +131,13 @@ class Project(ModelBase):
         blank=True,
         verbose_name='MB Number'
     )
+    is_visible = models.BooleanField(
+        help_text='Projects with a primary private repos should'
+        'be listed as false. All other projects should be '
+        'listed as true.',
+        default=False,
+        verbose_name='Is visible (in dashboard)?'
+    )
 
     class Meta:
         ordering = ['name']
