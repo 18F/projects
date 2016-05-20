@@ -1,9 +1,9 @@
 applications:
-- disk_quota: 256M
+- disk_quota: 512M
   domain: apps.cloud.gov
   host: 18f-projects
   instances: 1
-  memory: 256M
+  memory: 512M
   name: 18f-projects
   stack: cflinuxfs2
   buildpack: https://github.com/cloudfoundry/python-buildpack
