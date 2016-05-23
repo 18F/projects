@@ -3,6 +3,11 @@
 
 {% block content %}
 <h1>Here are some cool things we helped build</h1>
+<form class="py2">
+  <label class="hide" for="search">Search</label>
+  <input type="text" class="field" name="q" value="{{ query }}" placeholder="Search">
+  <button class="btn btn-outline bg-white">Search</button>
+</form>
 <div class="flex flex-wrap mxn2">
 {% for p in projects %}
   <div class="col-12 sm-col-6 md-col-4 border-box p2">
