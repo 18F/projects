@@ -1,4 +1,8 @@
+from functools import reduce
+from operator import or_
+
 from django.db import models
+from django.db.models import Q
 
 
 class ModelBase(models.Model):
@@ -48,6 +52,22 @@ class Client(models.Model):
 
     def __str__(self):
         return '%s - %s' % (self.department, self.agency)
+
+
+class ProjectManager(models.Manager):
+    def search(self, terms):
+        qs = self.get_queryset()
+        terms = [term.strip() for term in terms.split()]
+
+        if not terms:
+            return qs
+
+        q_objs = []
+        for term in terms:
+            q_objs.append(Q(name__icontains=term))
+            q_objs.append(Q(tagline__icontains=term))
+
+        return qs.filter(reduce(or_, q_objs))
 
 
 class Project(ModelBase):
@@ -138,6 +158,8 @@ class Project(ModelBase):
         default=False,
         verbose_name='Is visible (in dashboard)?'
     )
+
+    objects = ProjectManager()
 
     class Meta:
         ordering = ['name']
