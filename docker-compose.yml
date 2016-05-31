@@ -7,7 +7,7 @@ app:
   working_dir: /projects
   entrypoint: python /projects/entrypoint.py
   environment:
-    - DATABASE_URL=postgres://db/18fprojects
+    - DATABASE_URL=postgres://projects_user@db/18fprojects
   command: python manage.py runserver 0.0.0.0:8000
   ports:
     - "8000:8000"
