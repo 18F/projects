@@ -7,6 +7,7 @@ app:
   working_dir: /projects
   entrypoint: python /projects/entrypoint.py
   environment:
+    - PYTHONUNBUFFERED=yup
     - DATABASE_URL=postgres://projects_user@db/18fprojects
   command: python manage.py runserver 0.0.0.0:8000
   ports:
