@@ -1,8 +1,8 @@
 ### 18F Projects
 
-We have hundreds of repos and have released dozens of tools but they're hard to find unless you know where to look (or what you're looking for.) 
+We have hundreds of repos and have released dozens of tools but they're hard to find unless you know where to look (or what you're looking for.)
 
-We are now creating a way to surface and discover the projects that 18F works on. You will be able to easily find how each engagement and repo works, who works on it, and how to contact the team that created it. 
+We are now creating a way to surface and discover the projects that 18F works on. You will be able to easily find how each engagement and repo works, who works on it, and how to contact the team that created it.
 
 This is an ongoing **work in progress!!!** Our [Wiki](https://github.com/18F/projects/wiki) contains research notes and drafts that you might find helpful if you're also thinking about discovery.
 
@@ -24,10 +24,11 @@ $ python manage.py migrate
 $ python manage.py runserver
 ```
 
-A fixture file holding all possible federal clients is included. To load:
+Fixtures containing all possible federal clients and 18F business units are included.
+To load:
 
 ```
-$ python manage.py loaddata projects/fixtures/usa-agencies.json
+$ python manage.py loaddata projects/fixtures/*.json
 ```
 
 To load data from our S3 bucket, the following env vars are needed:
@@ -67,7 +68,7 @@ This will start up all required servers in containers and output their
 log information to stdout. If you're on Linux, you should be able
 to visit http://localhost:8000/ directly to access the site. If you're on
 OS X or Windows, you'll likely have to visit port 8000 on the IP
-address given to you by `docker-machine ip default`. (Note that this 
+address given to you by `docker-machine ip default`. (Note that this
 hassle will go away once [Docker goes native][] for OS X/Windows.)
 
 ##### Accessing the app container
