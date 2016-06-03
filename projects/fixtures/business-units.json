@@ -1,0 +1,72 @@
+[
+  {
+    "model": "projects.BusinessUnit",
+    "pk": 1,
+    "fields": {
+      "name": "Acquisition Services"
+    }
+  },
+  {
+    "model": "projects.BusinessUnit",
+    "pk": 2,
+    "fields": {
+      "name": "Custom Partner Solutions"
+    }
+  },
+  {
+    "model": "projects.BusinessUnit",
+    "pk": 3,
+    "fields": {
+      "name": "Learn"
+    }
+  },
+  {
+    "model": "projects.BusinessUnit",
+    "pk": 4,
+    "fields": {
+      "name": "Transformation Services"
+    }
+  },
+  {
+    "model": "projects.BusinessUnit",
+    "pk": 5,
+    "fields": {
+      "name": "Products and Platforms"
+    }
+  },
+  {
+    "model": "projects.BusinessUnit",
+    "pk": 6,
+    "fields": {
+      "name": "Chapters"
+    }
+  },
+  {
+    "model": "projects.BusinessUnit",
+    "pk": 7,
+    "fields": {
+      "name": "Business Intake"
+    }
+  },
+  {
+    "model": "projects.BusinessUnit",
+    "pk": 8,
+    "fields": {
+      "name": "Talent"
+    }
+  },
+  {
+    "model": "projects.BusinessUnit",
+    "pk": 9,
+    "fields": {
+      "name": "Operations"
+    }
+  },
+  {
+    "model": "projects.BusinessUnit",
+    "pk": 10,
+    "fields": {
+      "name": "Infrastructure"
+    }
+  }
+]

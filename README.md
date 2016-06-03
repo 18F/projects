@@ -24,10 +24,11 @@ $ python manage.py migrate
 $ python manage.py runserver
 ```
 
-A fixture file holding all possible federal clients is included. To load:
+Fixtures containing all possible federal clients and 18F business units are included.
+To load:
 
 ```sh
-$ python manage.py loaddata projects/fixtures/usa-agencies.json
+$ python manage.py loaddata projects/fixtures/*.json
 ```
 
 Sample project data may also be imported from a CSV file. If you are in 18F, export the first sheet of [this Google spreadsheet](https://docs.google.com/spreadsheets/d/1tCGfeLIzcRwyXXrNkxljRp0TTTQcxzojhFsNooe0UOs/edit#gid=0) as a CSV, then run the following command:

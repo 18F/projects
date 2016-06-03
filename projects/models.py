@@ -53,6 +53,13 @@ class Client(models.Model):
     def __str__(self):
         return '%s - %s' % (self.department, self.agency)
 
+class BusinessUnit(models.Model):
+    name = models.CharField(
+        max_length=100
+    )
+
+    def __str__(self):
+        return self.name
 
 class ProjectManager(models.Manager):
     def search(self, terms):
@@ -150,6 +157,14 @@ class Project(ModelBase):
         max_length=100,
         blank=True,
         verbose_name='MB Number'
+    )
+    business_unit = models.ForeignKey(
+        BusinessUnit,
+        help_text='The Business Unit that owns the project.',
+        default=None,
+        blank=True,
+        null=True,
+        verbose_name='Business Unit'
     )
     is_visible = models.BooleanField(
         help_text='Projects with a primary private repos should'
