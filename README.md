@@ -53,11 +53,6 @@ Then run:
 docker-compose run app python manage.py migrate
 ```
 
-There's a good chance this will fail with Django complaining that it can't
-connect to the database. If this happens, just re-run the command again.
-This is happening because the postgres container takes a little while to set
-up the initial database.
-
 Once the above command is successful, run:
 
 ```
