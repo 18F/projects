@@ -27,8 +27,14 @@ $ python manage.py runserver
 Fixtures containing all possible federal clients and 18F business units are included.
 To load:
 
-```
+```sh
 $ python manage.py loaddata projects/fixtures/*.json
+```
+
+Sample project data may also be imported from a CSV file. If you are in 18F, export the first sheet of [this Google spreadsheet](https://docs.google.com/spreadsheets/d/1tCGfeLIzcRwyXXrNkxljRp0TTTQcxzojhFsNooe0UOs/edit#gid=0) as a CSV, then run the following command:
+
+```sh
+$ python manage.py import_projects filename.csv
 ```
 
 To load data from our S3 bucket, the following env vars are needed:
@@ -49,7 +55,7 @@ at least until [Docker goes native][].)
 
 Then run:
 
-```
+```sh
 docker-compose run app python manage.py migrate
 ```
 
@@ -60,7 +66,7 @@ up the initial database.
 
 Once the above command is successful, run:
 
-```
+```sh
 docker-compose up
 ```
 
@@ -76,7 +82,7 @@ hassle will go away once [Docker goes native][] for OS X/Windows.)
 You'll likely want to run `manage.py` to do other things at some point.
 To do this, it's probably easiest to run:
 
-```
+```sh
 docker-compose run app bash
 ```
 
