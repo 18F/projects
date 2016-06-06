@@ -53,13 +53,13 @@ class Client(models.Model):
     def __str__(self):
         return '%s - %s' % (self.department, self.agency)
 
+
 class BusinessUnit(models.Model):
-    name = models.CharField(
-        max_length=100
-    )
+    name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
+
 
 class ProjectManager(models.Manager):
     def search(self, terms):

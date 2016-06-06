@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Client, Project, BusinessUnit
+from .models import BusinessUnit, Client, Project
 
 
 @admin.register(Client)
@@ -9,9 +9,11 @@ class ClientAdmin(admin.ModelAdmin):
     list_filter = ('department',)
     search_fields = ('department', 'agency',)
 
+
 @admin.register(BusinessUnit)
 class BusinessUnitAdmin(admin.ModelAdmin):
     list_display = ('name',)
+
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
