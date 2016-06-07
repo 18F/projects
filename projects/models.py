@@ -131,10 +131,14 @@ class Project(ModelBase):
         ],
         default=1
     )
+
+    BILLABLE = 0
+    NON_BILLABLE = 1
+
     billable = models.IntegerField(
         help_text='Whether or not the project is chargeable to a'
         ' non-18F client.',
-        choices=[(0, 'Billable'), (1, 'Non-billable')],
+        choices=[(BILLABLE, 'Billable'), (NON_BILLABLE, 'Non-billable')],
         default=1
     )
     cloud_dot_gov = models.BooleanField(
