@@ -52,10 +52,6 @@ class Command(BaseCommand):
             for result in results:
                 tock_id = result['id']
                 name = result['name']
-                if result['billable']:
-                    billable = Project.BILLABLE
-                else:
-                    billable = Project.NON_BILLABLE
                 logname = '%s (#%d)' % (name, tock_id)
 
                 if Project.objects.filter(tock_id=tock_id).exists():
@@ -66,7 +62,7 @@ class Command(BaseCommand):
                 project = Project(
                     name=name,
                     slug=slugify(name),
-                    billable=billable,
+                    is_billable=result['billable'],
                     tock_id=tock_id
                 )
                 project.save()
