@@ -131,12 +131,6 @@ class Project(ModelBase):
         ],
         default=1
     )
-    billable = models.IntegerField(
-        help_text='Whether or not the project is chargeable to a'
-        ' non-18F client.',
-        choices=[(0, 'Billable'), (1, 'Non-billable')],
-        default=1
-    )
     is_billable = models.BooleanField(
         help_text='Whether or not the project is chargeable to a'
         ' non-18F client.',
