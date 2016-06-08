@@ -1,7 +1,10 @@
+from unittest import SkipTest
 from django.apps import apps
 from django.test import TransactionTestCase
 from django.db.migrations.executor import MigrationExecutor
 from django.db import connection
+from django.conf import settings
+from test_without_migrations.management.commands.test import DisableMigrations
 
 
 class MigrationTestCase(TransactionTestCase):
@@ -15,6 +18,8 @@ class MigrationTestCase(TransactionTestCase):
     migrate_to = None
 
     def setUp(self):
+        if isinstance(settings.MIGRATION_MODULES, DisableMigrations):
+            raise SkipTest('migrations are disabled')
         assert self.migrate_from and self.migrate_to, \
             ("TestCase '{}' must define migrate_from and "
              "migrate_to properties".format(type(self).__name__))
