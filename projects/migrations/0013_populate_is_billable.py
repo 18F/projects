@@ -34,5 +34,5 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RunPython(convert_billable_to_boolean,
-                             reverse_code=lambda *x: None)
+                             reverse_code=migrations.RunPython.noop)
     ]
