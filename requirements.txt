@@ -21,6 +21,7 @@ psycopg2==2.6.1
 ptyprocess==0.5.1
 pyflakes==1.0.0
 python-dateutil==2.5.3
+python-social-auth==0.2.19
 simplegeneric==0.8.1
 six==1.10.0
 traitlets==4.2.1

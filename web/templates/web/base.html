@@ -11,6 +11,13 @@
   <div class="h6 p1 bg-black white center caps">Work in Progress</div>
   <div class="container px2 py3">
     <div class="mb4">
+      <div class="right">
+        {% if request.user.is_authenticated %}
+        {{ request.user }} <a href="{% url 'web:logout' %}">Logout</a>
+        {% else %}
+        <a href="{% url 'social:begin' 'github-org' %}?next={{ request.path }}">Login with Github</a>
+        {% endif %}
+      </div>
       <a href="/" class="h1 p0 btn">
         <img src="/static/img/logo.png" class="align-middle" width="75">
         <span class="bold gray">/projects</span>

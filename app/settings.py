@@ -14,7 +14,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'test_without_migrations',
+    'social.apps.django_app.default',
 
     'projects',
     'web',
@@ -99,3 +101,12 @@ LOGGING = {
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_BUCKET = os.environ.get('AWS_BUCKET')
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'social.backends.github.GithubOrganizationOAuth2',
+)
+
+SOCIAL_AUTH_GITHUB_ORG_NAME = '18F'
+SOCIAL_AUTH_GITHUB_ORG_KEY = os.environ.get('GITHUB_ORG_KEY')
+SOCIAL_AUTH_GITHUB_ORG_SECRET = os.environ.get('GITHUB_ORG_SECRET')
