@@ -53,13 +53,13 @@ class Client(models.Model):
     def __str__(self):
         return '%s - %s' % (self.department, self.agency)
 
+
 class BusinessUnit(models.Model):
-    name = models.CharField(
-        max_length=100
-    )
+    name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
+
 
 class ProjectManager(models.Manager):
     def search(self, terms):
@@ -131,11 +131,10 @@ class Project(ModelBase):
         ],
         default=1
     )
-    billable = models.IntegerField(
+    is_billable = models.BooleanField(
         help_text='Whether or not the project is chargeable to a'
         ' non-18F client.',
-        choices=[(0, 'Billable'), (1, 'Non-billable')],
-        default=1
+        default=False
     )
     cloud_dot_gov = models.BooleanField(
         help_text='Whether or not the project includes cloud.gov '
