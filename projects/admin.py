@@ -20,3 +20,4 @@ class ProjectAdmin(admin.ModelAdmin):
     list_display = ('name', 'status', 'client',)
     list_filter = ('status', 'is_billable', 'cloud_dot_gov', 'is_visible')
     search_fields = ('name',)
+    prepopulated_fields = {"slug": ("name",)}
