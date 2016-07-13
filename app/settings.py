@@ -31,6 +31,8 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'social.apps.django_app.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -110,3 +112,4 @@ AUTHENTICATION_BACKENDS = (
 SOCIAL_AUTH_GITHUB_ORG_NAME = '18F'
 SOCIAL_AUTH_GITHUB_ORG_KEY = os.environ.get('GITHUB_ORG_KEY')
 SOCIAL_AUTH_GITHUB_ORG_SECRET = os.environ.get('GITHUB_ORG_SECRET')
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/'
